@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("maven package") {
             steps {
-                dir(example) {
+                dir('example') {
                     echo 'Building the application..'
                     sh 'mvn clean package'
                     }
