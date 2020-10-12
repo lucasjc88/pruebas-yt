@@ -4,19 +4,19 @@ pipeline {
         maven 'Maven 3.6.3'
     }
     stages {
-        stage("maven package") {
-            steps {
-                dir('example') {
+        dir('example') {
+            stage("maven package") {
+                steps {
                     echo 'Building the application..'
                     sh 'mvn clean package'
                     }
                 }
+            stage("archive") {
+                steps {
+                    echo 'archive the application..'
+                    archive 'target/*.jar'
+                }
             }
         }
-        /*stage("archive") {
-            steps {
-                echo 'testing the application..'
-                archive 'example/target/*.jar'
-            }
-        }*/
+    }
 }
