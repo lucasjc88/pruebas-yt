@@ -3,8 +3,9 @@ pipeline {
     tools {
         maven 'Maven 3.6.3'
     }
-    stages {
-        dir('example') {
+    dir('example') {
+        stages {
+        
             stage("maven package") {
                 steps {
                     echo 'Building the application..'
