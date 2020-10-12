@@ -1,12 +1,14 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3.6.3'
+    }
     stages {
         stage("maven package") {
             steps {
                 dir(example) {
                     echo 'Building the application..'
-                    maven() {
-                        sh 'mvn clean package'
+                    sh 'mvn clean package'
                     }
                 }
             }
@@ -17,5 +19,4 @@ pipeline {
                 archive 'example/target/*.jar'
             }
         }*/
-    }
 }
