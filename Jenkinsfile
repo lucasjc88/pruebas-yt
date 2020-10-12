@@ -1,28 +1,21 @@
 pipeline {
-    
     agent any
-
     stages {
-
-        stage("build") {
-
+        stage("maven package") {
             steps {
-                echo 'Building the application..'
+                dir(example) {
+                    echo 'Building the application..'
+                    maven('maven 3.6.3') {
+                        sh 'mvn clean package'
+                    }
+                }
             }
         }
-
-        stage("Test") {
-
+        /*stage("archive") {
             steps {
                 echo 'testing the application..'
+                archive 'example/target/*.jar'
             }
-        }
-
-        stage("deploy") {
-
-            steps {
-                echo 'building the application..'
-            }
-        }
+        }*/
     }
 }
