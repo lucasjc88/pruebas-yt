@@ -5,7 +5,7 @@ pipeline {
             steps {
                 dir(example) {
                     echo 'Building the application..'
-                    maven('maven 3.6.3') {
+                    maven() {
                         sh 'mvn clean package'
                     }
                 }
