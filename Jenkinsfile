@@ -5,16 +5,16 @@ pipeline {
     }
     stages {
         stage("maven package") {
-            dir('example') {
-                steps {
+            steps {
+                dir('example') {
                     echo 'Building the application..'
                     sh 'mvn clean package'
                 }
             }
         }   
         stage("archive") {
-            dir('example') { 
-                steps {
+            steps {
+                dir('example') {
                     echo 'archive the application..'
                     archive 'target/*.jar'
                 }
